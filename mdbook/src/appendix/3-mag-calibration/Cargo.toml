@@ -2,10 +2,19 @@
 name = "mag-cal"
 version = "0.1.0"
 authors = [
-  "Henrik Böving <hargonix@gmail.com>",
-  "Bart Massey <bart.massey@gmail.com>",
+    "Henrik Böving <hargonix@gmail.com>",
+    "Bart Massey <bart.massey@gmail.com>",
 ]
 edition = "2021"
+
+[[bin]]
+name = "mag-cal"
+test = false
+bench = false
+
+[lib]
+test = false
+bench = false
 
 [dependencies]
 microbit-v2 = "0.15.1"

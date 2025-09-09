@@ -4,6 +4,11 @@ version = "0.1.0"
 authors = ["Henrik Böving <hargonix@gmail.com>"]
 edition = "2021"
 
+[[bin]]
+name = "rtt-check"
+test = false
+bench = false
+
 [dependencies]
 cortex-m-rt = "0.7.5"
 panic-rtt-target = "0.2.0"

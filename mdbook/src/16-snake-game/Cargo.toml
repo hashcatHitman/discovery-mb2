@@ -4,6 +4,11 @@ version = "0.1.0"
 authors = ["Alan Bunbury <dev@bunburya.eu>"]
 edition = "2021"
 
+[[bin]]
+name = "snake-game"
+test = false
+bench = false
+
 [dependencies]
 microbit-v2 = "0.15.1"
 cortex-m-rt = "0.7.5"

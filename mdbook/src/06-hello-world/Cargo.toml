@@ -4,6 +4,11 @@ edition = "2021"
 name = "hello-world"
 version = "0.1.0"
 
+[[bin]]
+name = "hello-world"
+test = false
+bench = false
+
 [dependencies]
 cortex-m-rt = "0.7.5"
 embedded-hal = "1.0.0"

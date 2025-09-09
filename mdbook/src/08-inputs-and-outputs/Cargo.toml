@@ -3,6 +3,11 @@ name = "inputs-and-polling"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "inputs-and-polling"
+test = false
+bench = false
+
 [dependencies]
 microbit-v2 = "0.15.0"
 cortex-m-rt = "0.7.3"

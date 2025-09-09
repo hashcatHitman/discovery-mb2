@@ -4,6 +4,11 @@ version = "0.1.0"
 authors = ["Henrik Böving <hargonix@gmail.com>"]
 edition = "2021"
 
+[[bin]]
+name = "punch-o-meter"
+test = false
+bench = false
+
 [dependencies]
 microbit-v2 = "0.15.1"
 cortex-m-rt = "0.7.5"

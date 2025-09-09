@@ -8,6 +8,15 @@ edition = "2021"
 name = "registers"
 version = "0.2.0"
 
+[[bin]]
+name = "registers"
+test = false
+bench = false
+
+[lib]
+test = false
+bench = false
+
 [dependencies]
 cortex-m-rt = "0.7.5"
 microbit-v2 = "0.15.1"

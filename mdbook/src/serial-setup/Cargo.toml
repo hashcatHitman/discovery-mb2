@@ -3,6 +3,10 @@ name = "serial-setup"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+test = false
+bench = false
+
 [dependencies]
 embedded-io = "0.6.1"
 microbit-v2 = "0.15.1"

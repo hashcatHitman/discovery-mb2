@@ -4,6 +4,11 @@ edition = "2021"
 name = "i2c"
 version = "0.1.0"
 
+[[bin]]
+name = "i2c"
+test = false
+bench = false
+
 [dependencies]
 microbit-v2 = "0.15.1"
 cortex-m-rt = "0.7.5"

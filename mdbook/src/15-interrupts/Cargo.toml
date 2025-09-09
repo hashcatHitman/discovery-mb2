@@ -3,6 +3,11 @@ name = "interrupts"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "interrupts"
+test = false
+bench = false
+
 [dependencies]
 cortex-m-rt = "0.7"
 critical-section = "1"
