@@ -2,7 +2,8 @@
 #![no_std]
 
 use cortex_m_rt::entry;
-use embedded_hal::{delay::DelayNs, digital::OutputPin};
+use embedded_hal::delay::DelayNs;
+use embedded_hal::digital::OutputPin;
 use nrf52833_hal::{gpio, pac, timer};
 use panic_halt as _;
 

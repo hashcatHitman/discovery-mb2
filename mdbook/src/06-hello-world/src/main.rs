@@ -2,7 +2,8 @@
 #![no_std]
 
 use cortex_m_rt::entry;
-use embedded_hal::{delay::DelayNs, digital::OutputPin};
+use embedded_hal::delay::DelayNs;
+use embedded_hal::digital::OutputPin;
 use microbit::hal::{gpio, timer};
 use panic_halt as _;
 
@@ -10,8 +11,14 @@ use panic_halt as _;
 fn main() -> ! {
     let board = microbit::Board::take().unwrap();
 
-    let mut row1 = board.display_pins.row1.into_push_pull_output(gpio::Level::High);
-    let _col1 = board.display_pins.col1.into_push_pull_output(gpio::Level::Low);
+    let mut row1 = board
+        .display_pins
+        .row1
+        .into_push_pull_output(gpio::Level::High);
+    let _col1 = board
+        .display_pins
+        .col1
+        .into_push_pull_output(gpio::Level::Low);
 
     let mut timer0 = timer::Timer::new(board.TIMER0);
 
