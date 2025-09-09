@@ -1,9 +1,41 @@
 [build]
 target = "thumbv7em-none-eabihf"
+rustflags = [
+    "-Zthreads=8",
+    "-Zcrate-attr=feature(strict_provenance_lints,unqualified_local_imports)",
+]
 
 [target.thumbv7em-none-eabihf]
 runner = "probe-rs run --chip nRF52833_xxAA"
-rustflags = [
-  "-C", "linker=rust-lld",
-  "-C", "link-arg=-Tlink.x",
-]
+rustflags = ["-C", "linker=rust-lld", "-C", "link-arg=-Tlink.x"]
+
+[future-incompat-report]
+frequency = 'always'
+
+[cargo-new]
+vcs = "git"
+
+[http]
+ssl-version.min = "tlsv1.3"
+
+[profile.release]
+codegen-units = 1
+strip = true
+opt-level = 3
+debug = false
+lto = true
+incremental = false
+
+[profile.release.package."*"]
+codegen-units = 1
+strip = true
+opt-level = 3
+debug = false
+incremental = false
+
+[profile.release.build-override]
+codegen-units = 1
+strip = true
+opt-level = 3
+debug = false
+incremental = false

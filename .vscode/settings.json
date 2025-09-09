@@ -1,3 +1,4 @@
 {
-    "rust-analyzer.cargo.features": "all"
+  // I already pass all-features to clippy, so this breaks things.
+  //   "rust-analyzer.cargo.features": "all",
 }
