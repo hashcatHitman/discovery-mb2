@@ -4,8 +4,9 @@
 use cortex_m_rt::entry;
 use embedded_hal::delay::DelayNs;
 use embedded_hal::digital::{InputPin, OutputPin};
+use microbit::Board;
+use microbit::hal::gpio;
 use microbit::hal::timer::Timer;
-use microbit::{hal::gpio, Board};
 use panic_rtt_target as _;
 use rtt_target::rtt_init_print;
 
