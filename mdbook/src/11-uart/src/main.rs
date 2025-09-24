@@ -1,15 +1,14 @@
 #![no_main]
 #![no_std]
 
-use cortex_m::asm::wfi;
+use core::fmt::Write as _;
+
 use cortex_m_rt::entry;
 use microbit::hal::uarte;
 use microbit::hal::uarte::{Baudrate, Parity};
 use panic_rtt_target as _;
 use rtt_target::rtt_init_print;
 use serial_setup::UartePort;
-
-const PAYLOAD: &str = "The quick brown fox jumps over the lazy dog.\n\0";
 
 #[entry]
 fn main() -> ! {
@@ -26,13 +25,10 @@ fn main() -> ! {
             UartePort::new(serial)
         };
 
-        PAYLOAD.bytes().for_each(|byte| {
-            serial.write(byte).unwrap();
-        });
-        serial.flush().unwrap();
-
         loop {
-            wfi();
+            let byte: char = serial.read().unwrap().into();
+            write!(serial, "{byte}").unwrap();
+            serial.flush().unwrap();
         }
     } else {
         #[expect(clippy::panic, reason = "Can't avoid it anymore.")]
