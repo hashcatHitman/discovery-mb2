@@ -4,6 +4,7 @@
 use core::fmt::Write as _;
 
 use cortex_m_rt::entry;
+use heapless::Vec;
 use microbit::hal::uarte;
 use microbit::hal::uarte::{Baudrate, Parity};
 use panic_rtt_target as _;
@@ -25,9 +26,29 @@ fn main() -> ! {
             UartePort::new(serial)
         };
 
+        // A buffer with 32 bytes of capacity
+        let mut buffer: Vec<u8, 32> = Vec::new();
+
         loop {
-            let byte: char = serial.read().unwrap().into();
-            write!(serial, "{byte}").unwrap();
+            buffer.clear();
+
+            loop {
+                match serial.read().unwrap() {
+                    b'\r' => break,
+                    other => match buffer.push(other) {
+                        Ok(_) => (),
+                        Err(error) => write!(
+                            serial,
+                            "Push to buffer failed with error: {error}\r\n\0"
+                        )
+                        .unwrap(),
+                    },
+                }
+            }
+
+            buffer.iter().rev().for_each(|byte| {
+                serial.write(*byte).unwrap();
+            });
             serial.flush().unwrap();
         }
     } else {
