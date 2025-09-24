@@ -3,14 +3,10 @@
 
 use cortex_m::asm::wfi;
 use cortex_m_rt::entry;
+use microbit::hal::uarte;
+use microbit::hal::uarte::{Baudrate, Parity};
 use panic_rtt_target as _;
 use rtt_target::rtt_init_print;
-
-use microbit::{
-    hal::uarte,
-    hal::uarte::{Baudrate, Parity},
-};
-
 use serial_setup::UartePort;
 
 #[entry]
