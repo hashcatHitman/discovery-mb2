@@ -25,5 +25,6 @@ fn main() -> ! {
         *(PORT_P0_OUT as *mut u32) &= !(1 << 19);
     }
 
+    #[allow(clippy::empty_loop)]
     loop {}
 }
